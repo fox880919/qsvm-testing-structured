@@ -1,0 +1,54 @@
+{
+  "name": "qsvm-structure-testing",
+  "version": "1.0.0",
+  "private": true,
+  "main": "electron/main.js",
+  "scripts": {
+    "start": "node run.js",
+    "web": "concurrently -n api,web -c blue,green \"bash -c 'source venv/bin/activate && uvicorn api.server:app --host 0.0.0.0 --port 8000'\" \"npm run dev --prefix frontend\"",
+    "electron": "concurrently -n api,web,electron -c blue,green,magenta \"bash -c 'source venv/bin/activate && uvicorn api.server:app --host 127.0.0.1 --port 8000'\" \"npm run dev --prefix frontend\" \"wait-on http://localhost:5173 http://localhost:8000/api/health && electron .\"",
+    "dev": "npm run start",
+    "build:frontend": "npm run build --prefix frontend",
+    "electron:build": "npm run build:frontend && electron-builder",
+    "electron:start": "electron ."
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.0",
+    "electron": "^33.2.0",
+    "electron-builder": "^25.1.8",
+    "wait-on": "^8.0.1"
+  },
+  "build": {
+    "extends": null,
+    "appId": "uk.ac.kcl.qsvm-structure-testing",
+    "productName": "QSVM Structure Testing",
+    "directories": {
+      "output": "dist-electron"
+    },
+    "files": [
+      "package.json",
+      "electron/main.js",
+      "electron/**",
+      "frontend/dist/**",
+      "api/**",
+      "venv/**",
+      "progress report/**",
+      "main.py",
+      "main_class_manager.py",
+      "main_statistical_class_manager.py",
+      "step2_kernel_test.py",
+      "classes/**",
+      "*.py"
+    ],
+    "mac": {
+      "category": "public.app-category.developer-tools",
+      "target": ["dmg", "zip"]
+    },
+    "win": {
+      "target": ["nsis", "portable"]
+    },
+    "linux": {
+      "target": ["AppImage", "deb"]
+    }
+  }
+}

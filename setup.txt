@@ -1,0 +1,4 @@
+cd arabia-sports-club 
+
+1- nvm use 25.5.0
+2- npm run dev

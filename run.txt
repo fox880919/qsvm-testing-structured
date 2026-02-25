@@ -1,0 +1,61 @@
+================================================================================
+How to Run Experiments in Python (python3)
+================================================================================
+
+COMMAND LINE
+------------
+
+    cd qsvm_structure_testing
+    source venv/bin/activate          # On Windows: venv\Scripts\activate
+    python3 main.py --dataset 0 --kfold 5 [--experiment all|1|2|3]
+
+Arguments:
+    --dataset   0=Wine, 1=Load Digits, 2=Credit Card, 3=MNIST
+    --kfold     K-fold for Experiments 1 & 2 (default: 5)
+    --experiment  all=run all three, 1=Baseline only, 2=Mutation only, 3=Kernel only
+
+
+FROM PYTHON CODE
+----------------
+
+    import os
+    os.chdir('/path/to/qsvm_structure_testing')
+
+    from main import run_tests
+    run_tests(dataset=0, kfold=5, experiment='all')
+
+
+WHAT RUN_TESTS() DOES
+---------------------
+
+1. Experiment 1: Baseline / Stochasticity (MR#1 scaling, MR#2 rotation, no mutations)
+   -> Checks MTS=0 to verify QSVM determinism
+
+2. Experiment 2: Mutation testing (MRs 1-12, amplitude + angle embeddings)
+   -> Output: saved_data/my_data_frame_Jan_all.csv
+
+3. Experiment 3: Kernel testing (14 MRs, 3 feature maps)
+   -> Output: results_v41_kernel_test.csv
+
+
+RUN A SINGLE EXPERIMENT
+-----------------------
+
+    python3 main.py --dataset 0 --kfold 5 --experiment 1   # Baseline only
+    python3 main.py --dataset 0 --kfold 5 --experiment 2   # Mutation only
+    python3 main.py --dataset 0 --kfold 5 --experiment 3   # Kernel only
+
+
+GENERATE PROGRESS REPORT CHARTS
+-------------------------------
+
+After Experiment 2 and/or 3, generate figures for the LaTeX report:
+
+    python -m charts.run_all_charts
+
+Or individually:
+    python charts/create_chart_mutant_heatmap.py   # Heatmap (Exp 2)
+    python charts/create_chart_pie.py             # Pie chart (Exp 2)
+    python charts/create_chart_v41.py             # Detection + heatmap (Exp 3)
+
+Outputs: progress report/figures/ and progress report/figures2/

@@ -1,0 +1,4 @@
+# LaTeX temp files (handled by root .gitignore; this is for local overrides)
+texput.log
+quantikz.*
+sample.*

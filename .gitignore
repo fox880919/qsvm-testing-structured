@@ -1,0 +1,56 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+.pytest_cache/
+*.egg-info/
+.eggs/
+venv/
+.venv/
+*.csv
+
+# Node / Frontend
+node_modules/
+frontend/node_modules/
+frontend/dist/
+dist-ssr/
+*.local
+
+# Electron build (heavy)
+dist-electron/
+
+# LaTeX auxiliary files (regenerated on compile)
+*.aux
+*.log
+*.out
+*.toc
+*.bbl
+*.blg
+*.run.xml
+*-blx.bib
+*.fdb_latexmk
+*.fls
+*.synctex.gz
+
+# LaTeX PDFs (can be regenerated)
+*.pdf
+
+# Keep only v6 in LaTeX - ignore other report versions
+progress report/progress_report.tex
+progress report/progress_report_2.tex
+progress report/progress_report_3.tex
+progress report/progress_report_4.tex
+progress report/progress_report_5.tex
+progress report/progress_report_7.tex
+progress report/progress_report_8.tex
+
+# Build / dist
+dist/
+build/
+
+# Misc
+.DS_Store
+*.swp
+*.swo
+.idea/
+.vscode/

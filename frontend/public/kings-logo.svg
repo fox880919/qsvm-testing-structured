@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 50" fill="white">
+  <text x="0" y="18" font-family="Georgia, serif" font-size="20" font-weight="bold">KING'S</text>
+  <text x="0" y="34" font-family="Georgia, serif" font-size="12" font-style="italic">College </text>
+  <text x="0" y="48" font-family="Georgia, serif" font-size="16" font-weight="bold">LONDON</text>
+  <line x1="0" y1="50" x2="160" y2="50" stroke="white" stroke-width="1.5"/>
+</svg>
