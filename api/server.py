@@ -469,7 +469,7 @@ def get_latest_pdf():
 
 @app.get("/api/report/pdf/{filename}")
 def get_pdf_by_name(filename: str):
-    """Serve a specific PDF by name (e.g. progress_report_6)."""
+    """Serve a specific PDF by name (e.g. progress_report_8)."""
     if not PROGRESS_REPORT_DIR.exists():
         raise HTTPException(404, "Progress report folder not found")
     safe = "".join(c for c in filename if c.isalnum() or c in "_-.")

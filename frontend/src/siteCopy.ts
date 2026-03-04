@@ -170,17 +170,17 @@ export const SITE_COPY = {
     viewPdfButton: "View PDF",
     saveSuccessMessage: "Saved and PDF updated successfully.",
     loadingText: "Loading…",
-    fileNotFound: "progress_report_6.tex not found.",
+    fileNotFound: "progress_report_8.tex not found.",
   },
 
   // Project info (student & supervisors)
   project: {
     student: {
-      name: "Your Name",
+      name: "Faiez Altamimi",
     },
     supervisors: [
-      { name: "Supervisor 1 Name", role: "Primary Supervisor" },
-      { name: "Supervisor 2 Name", role: "Secondary Supervisor" },
+      { name: "Prof. Mohammad Mousavi", role: "Primary Supervisor" },
+      { name: "Dr. Gunel Jahangirova", role: "Secondary Supervisor" },
     ],
   },
 } as const

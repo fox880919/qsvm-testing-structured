@@ -7,6 +7,8 @@ __pycache__/
 .eggs/
 venv/
 .venv/
+python/
+python-*/
 *.csv
 
 # Node / Frontend
@@ -35,14 +37,14 @@ dist-electron/
 # LaTeX PDFs (can be regenerated)
 *.pdf
 
-# Keep only v6 in LaTeX - ignore other report versions
+# Keep only v8 in LaTeX - ignore other report versions
 progress report/progress_report.tex
 progress report/progress_report_2.tex
 progress report/progress_report_3.tex
 progress report/progress_report_4.tex
 progress report/progress_report_5.tex
+progress report/progress_report_6.tex
 progress report/progress_report_7.tex
-progress report/progress_report_8.tex
 
 # Build / dist
 dist/

@@ -119,6 +119,9 @@ AVAILABLE SCRIPTS
     scripts/run_backend.sh - Start FastAPI backend only
     scripts/run_frontend.sh- Start Vite frontend only
 
+    setup-python.bat / setup-python.sh  - Prepare bundled Python for Electron
+    build.bat / build.sh                - Build Electron app (run after setup-python)
+
 
 URLS
 ----
@@ -213,8 +216,24 @@ ELECTRON PACKAGING (standalone desktop app)
 --------------------------------------------
 
 Prerequisites:
-    - Frontend must be built: npm run build:frontend (or runs automatically)
-    - Python venv must exist (embedded in the packaged app)
+    - Bundled Python: run prepare:python first (required for packaging)
+    - Frontend built: npm run build:frontend (runs automatically with electron:build)
+
+Bundled Python (relocatable):
+    The app bundles a relocatable Python so it runs on machines without Python installed.
+    python/ is in .gitignore (~100MB+); anyone building must run prepare:python:
+
+    Two-step (Windows):
+        setup-python.bat    # 1. Download Python, install deps (~2 min)
+        build.bat           # 2. Build the app (add -- --mac or -- --win for target)
+
+    Two-step (Mac/Linux):
+        ./setup-python.sh   # 1. Download Python, install deps (~2 min)
+        ./build.sh          # 2. Build the app (add -- --mac or -- --win for target)
+
+    Or via npm:
+        npm run prepare:python && npm run electron:build
+        npm run electron:build:standalone   # one-step
 
 Build for current OS (macOS / Windows / Linux):
     npm run electron:build

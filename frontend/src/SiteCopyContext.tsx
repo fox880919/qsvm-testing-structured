@@ -18,6 +18,19 @@ function mergeWithDefaults(stored: SiteCopy | null): SiteCopy {
       tabs: nb?.tabs?.length ? nb.tabs : DEFAULT_SITE_COPY.notebook.tabs,
     }
   }
+  // Ensure project (student & supervisors) exists and has content – old localStorage may be empty
+  const proj = (merged as Record<string, unknown>).project as Record<string, unknown> | undefined
+  const student = proj?.student as { name?: string } | undefined
+  const supervisors = proj?.supervisors
+  const hasValidProject =
+    proj &&
+    typeof student?.name === 'string' &&
+    student.name.trim() !== '' &&
+    Array.isArray(supervisors) &&
+    supervisors.length > 0
+  if (!hasValidProject) {
+    ;(merged as Record<string, unknown>).project = JSON.parse(JSON.stringify(DEFAULT_SITE_COPY.project))
+  }
   return merged
 }
 

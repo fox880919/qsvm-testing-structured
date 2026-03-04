@@ -3,7 +3,7 @@ import { useSiteCopy } from '../SiteCopyContext'
 import { EditableText } from './EditableText'
 
 const API_BASE = import.meta.env.VITE_API_URL || ''
-const LATEX_FILE = 'progress_report_6'
+const LATEX_FILE = 'progress_report_8'
 
 interface LatexFileResponse {
   filename: string

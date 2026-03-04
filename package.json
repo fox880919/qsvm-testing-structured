@@ -10,7 +10,9 @@
     "dev": "npm run start",
     "build:frontend": "npm run build --prefix frontend",
     "electron:build": "npm run build:frontend && electron-builder",
-    "electron:start": "electron ."
+    "electron:start": "electron .",
+    "prepare:python": "node scripts/prepare-python.js",
+    "electron:build:standalone": "node scripts/prepare-python.js && npm run electron:build"
   },
   "devDependencies": {
     "concurrently": "^9.1.0",
@@ -40,15 +42,64 @@
       "classes/**",
       "*.py"
     ],
+    "asarUnpack": [
+      "api/**",
+      "classes/**",
+      "*.py",
+      "main.py",
+      "main_class_manager.py",
+      "main_statistical_class_manager.py",
+      "step2_kernel_test.py"
+    ],
     "mac": {
       "category": "public.app-category.developer-tools",
-      "target": ["dmg", "zip"]
+      "target": [
+        "dmg",
+        "zip"
+      ]
     },
     "win": {
-      "target": ["nsis", "portable"]
+      "target": [
+        "nsis",
+        "portable"
+      ]
     },
     "linux": {
-      "target": ["AppImage", "deb"]
-    }
+      "target": [
+        "AppImage",
+        "deb"
+      ]
+    },
+    "extraResources": [
+      {
+        "from": "python",
+        "to": "python"
+      },
+      {
+        "from": "api",
+        "to": "app/api"
+      },
+      {
+        "from": "classes",
+        "to": "app/classes"
+      },
+      {
+        "from": "progress report",
+        "to": "app/progress report"
+      },
+      {
+        "from": "frontend/dist",
+        "to": "app/frontend/dist"
+      },
+      {
+        "from": ".",
+        "to": "app",
+        "filter": [
+          "*.py",
+          "!api/**",
+          "!classes/**"
+        ]
+      }
+    ]
   }
 }
