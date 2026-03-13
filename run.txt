@@ -56,6 +56,6 @@ After Experiment 2 and/or 3, generate figures for the LaTeX report:
 Or individually:
     python charts/create_chart_mutant_heatmap.py   # Heatmap (Exp 2)
     python charts/create_chart_pie.py             # Pie chart (Exp 2)
-    python charts/create_chart_v41.py             # Detection + heatmap (Exp 3)
+    python charts/create_chart_v41_2_ordered.py  # Detection + heatmap (Exp 3, ordered MR)
 
 Outputs: progress report/figures/ and progress report/figures2/

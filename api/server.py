@@ -341,8 +341,8 @@ FIGURES2_DIR = PROGRESS_REPORT_DIR / "figures2"
 FIGURE_PATHS = {
     "experiment2_heatmap": FIGURES_DIR / "mutant_outcome_fully_hierarchical_heatmap_sequential_labels_fixed_data.png",
     "experiment2_pie": FIGURES_DIR / "mutant_detection_coverage_pie_chart.png",
-    "experiment3_detection": FIGURES2_DIR / "chart_v41_detection_omni_2.png",
-    "experiment3_heatmap": FIGURES2_DIR / "chart_v41_heatmap_omni_2.png",
+    "experiment3_detection": FIGURES2_DIR / "chart_v41_detection_omni_2_ordered.png",
+    "experiment3_heatmap": FIGURES2_DIR / "chart_v41_heatmap_omni_2_ordered.png",
 }
 
 

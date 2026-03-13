@@ -20,7 +20,7 @@ sys.path.insert(0, PROJECT_ROOT)
 def main():
     from charts.create_chart_mutant_heatmap import generate_mutant_heatmap
     from charts.create_chart_pie import generate_pie_chart
-    from charts.create_chart_v41 import generate_v41_plots
+    from charts.create_chart_v41_2_ordered import generate_v41_plots
 
     print("Generating progress report charts...")
     ok1 = generate_mutant_heatmap()

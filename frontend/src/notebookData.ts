@@ -589,35 +589,6 @@ run_step2_kernel_test()`,
       },
     ],
   },
-  {
-    id: 'charts',
-    title: 'Report Figures',
-    cells: [
-      {
-        id: 'charts-desc',
-        type: 'markdown',
-        content: `## 20. Generate Report Figures
-
-After running Experiments 2 and/or 3, generate heatmaps and charts for the progress report:
-
-- **Statistical Testing**: Mutant outcome heatmap, detection coverage pie chart
-- **Kernel Testing**: Detection confidence chart, MR efficiency heatmap`,
-      },
-      {
-        id: 'charts-code',
-        type: 'code',
-        content: `# Run chart generation (requires Statistical Testing and/or Kernel Testing CSV output)
-from charts.create_chart_mutant_heatmap import generate_mutant_heatmap
-from charts.create_chart_pie import generate_pie_chart
-from charts.create_chart_v41 import generate_v41_plots
-
-ok1 = generate_mutant_heatmap()
-ok2 = generate_pie_chart()
-ok3 = generate_v41_plots()
-print("Statistical Testing heatmap:", ok1, "| pie:", ok2, "| Kernel Testing:", ok3)`,
-      },
-    ],
-  },
 ]
 
 export const DEFAULT_NOTEBOOK_TABS = [
@@ -625,5 +596,4 @@ export const DEFAULT_NOTEBOOK_TABS = [
   { id: 'exp1', label: 'Baseline' },
   { id: 'exp2', label: 'Statistical Testing' },
   { id: 'exp3', label: 'Kernel Testing' },
-  { id: 'charts', label: 'Report Figures' },
 ]

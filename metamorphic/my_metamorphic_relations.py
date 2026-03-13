@@ -56,14 +56,30 @@ class MyMetamorphicRelations:
 
         return scaled_x_tr
 
-    
     #2-1
     def metamorphic_feature_rotation_with_angle(x, angle):
+        N = x.shape[1] # Works for any number of dimensions
+        
+        # 1. Create a real skew-symmetric matrix A (where A^T = -A)
+        # We put 1s above the diagonal, and -1s below the diagonal
+        A = np.triu(np.ones((N, N)), 1)
+        A = A - A.T 
+        
+        # 2. Calculate the matrix exponential
+        # The exponential of a real skew-symmetric matrix is ALWAYS 
+        # a real orthogonal rotation matrix.
+        rotation_matrix = expm(angle * A)
+        
+        # 3. Apply the rotation to the dataset
+        return np.dot(x, rotation_matrix.T)
+    
+    #2-2
+    def old_metamorphic_feature_rotation_with_angle(x, angle):
         # Generate a random rotation matrix
         rotation_matrix = expm(np.eye(x.shape[1]) * 1j * angle) 
         return np.dot(rotation_matrix, x.T).T
     
-    #2-2 => to try later
+    #2-3 => to try later
     def metamorphic_feature_geometric_rotation_with_angle(x, angle):
         
         rotation_matrix = np.array([
