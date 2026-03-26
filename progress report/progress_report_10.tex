@@ -14,7 +14,7 @@
 \usetikzlibrary{shapes.geometric, arrows, positioning, fit, backgrounds}
 
 % Graphics
-\usepackage{graphicx} 
+\usepackage{graphicx}
 \graphicspath{{./images/}} 
 
 % Tables
@@ -108,7 +108,7 @@
 \date{Feb 2026}
 
 % Appendices
-\usepackage[toc,page]{appendix} 
+\usepackage[toc,page]{appendix}
 
 % --- Main Document ---
 \begin{document}
@@ -127,21 +127,21 @@
 	
 	Quantum Computing (QC) harnesses its distinctive properties—such as superposition and entanglement—to solve numerous complex problems. Yet, QC applications remain uncommon, mainly due to the challenges in its software development. Many classical software developers lack the required knowledge to develop quantum circuits. To bridge this gap, many software engineering techniques, tools and methods are being adapted to QC to facilitate the development experience. One of the mandatory areas of software engineering, essential for robust QC development, is software testing.
 	
-	The primary challenge in quantum software testing is the oracle problem, i.e., the lack of software specification \cite{9036058}. The other challenges in QC software testing are: scarcity of QC programs, QC probabilistic nature, destructive measurement \cite{wang2023qucatcombinatorialtestingtool} and that QC development involves the usage of low-level circuits and gates. In order to address the difficulties in testing QC programs \cite{garousi2020software}, different classical testing techniques were adopted for QC e.g., mutation testing \cite{9844849}, fuzz testing \cite{wang2018quanfuzzfuzztestingquantum}, metamorphic testing \cite{10.1145/3528230.352918}, and differential testing. One of the prominent testing techniques is metamorphic testing (MT). It is a property-based testing method, which treats the system under test (SUT) as a black box. 
+	The primary challenge in quantum software testing is the oracle problem, i.e., the lack of software specification \cite{9036058}. The other challenges in QC software testing are: scarcity of QC programs, QC's probabilistic nature, destructive measurement \cite{wang2023qucatcombinatorialtestingtool}, and that QC development involves the usage of low-level circuits and gates. In order to address the difficulties in testing QC programs \cite{garousi2020software}, different classical testing techniques were adopted for QC e.g., mutation testing \cite{9844849}, fuzz testing \cite{wang2018quanfuzzfuzztestingquantum}, metamorphic testing \cite{rabreu2022}, and differential testing. One of the prominent testing techniques is metamorphic testing (MT). It is a property-based testing method, which treats the system under test (SUT) as a black box. 
 	
-	Moreover, QC is considered a good fit for Artificial Intelligence (AI) and specifically for machine learning (ML) algorithms, which indicates that the field of quantum machine learning (QML) is a promising field. Similarly to QC, ML programs also can be treated as black boxes in software testing, and therefore QML algorithms are particularly suitable to be tested as black boxes. The goal of Quantum Machine Learning is not only to accelerate algorithms, but also to leverage the fundamental principles of quantum mechanics to develop novel processing methods. We will be exploring most of the notable QML algorithms during the next couple of years e.g., Quantum Neural Networks (QNNs) and Quantum Convolutional Neural Networks (QCNNs) algorithms.
+	 QC is considered a good fit for Artificial Intelligence (AI) and specifically for machine learning (ML) algorithms, which indicates that the field of quantum machine learning (QML) is a promising field. Similarly to QC, ML programs also can be treated as black boxes in software testing, and therefore QML algorithms are particularly suitable to be tested as black boxes. The goal of Quantum Machine Learning is not only to accelerate algorithms, but also to leverage the fundamental principles of quantum mechanics to develop novel processing methods. We will be exploring most of the notable QML algorithms during the next couple of years e.g., Quantum Support Vector Machines (QSVM) and Quantum Convolutional Neural Networks (QCNNs) algorithms.
 	
-	In general, one of the most common ML algorithms for QC is support vector machines (SVM). There are different types of machine learning algorithms e.g., supervised learning, unsupervised learning and reinforcement learning. SVM is a supervised learning algorithm that is used for data classification and regression. SVM implements a kernel that calculates the data similarity using an inner product while avoiding the intensive computation, without ever explicitly mapping the data into that space. This allows the algorithm to find complex patterns by operating as if it were working in a higher dimension, but with the computational cost of the original dimension. One of the ways to utilize QC with SVM is to implement a quantum counterpart of the kernel with SVM, which is known as QSVM. The quantum kernel will expedite the learning process in QSVM compared to the classical SVM \cite{Rebentrost_2014} \cite{Gentinetta_2024}. In this work, we will use metamorphic testing (MT) to test QSVM as a black box system along with mutation analysis and statistical testing. 
+	A common ML algorithm is support vector machines (SVM). There are different types of machine learning algorithms e.g., supervised learning, unsupervised learning and reinforcement learning. SVM is a supervised learning algorithm that is used for data classification and regression. SVM implements a kernel that calculates the data similarity using an inner product while avoiding the intensive computation, without ever explicitly mapping the data into that space. This allows the algorithm to find complex patterns by operating as if it were working in a higher dimension, but with the computational cost of the original dimension. One of the ways to utilize QC with SVM is to implement a quantum counterpart of the kernel with SVM, which is known as QSVM. The quantum kernel will expedite the learning process in QSVM compared to the classical SVM \cite{Rebentrost_2014} \cite{Gentinetta_2024}. In this work, we will use metamorphic testing (MT) to test QSVM as a black box system along with mutation analysis and statistical testing. 
 	
-	Section \ref{sec:preliminaries} goes through the preliminaries about QC and software testing. Section \ref{sec:LiteratureReview} will review the literature and relatively recent research around software testing with quantum programs and machine learning algorithms. Section \ref{sec:Metamorphic_Relations_for_Quantum_Support_Vector_Machine} will provide the mechanism of finding metamorphic relations along with validating them. Section \ref{sec:evaluation} elaborates on the challenges faced, and the subsequent solutions. Section \ref{sec:conclusion} draws a conclusion to this work and shows the work plan for the next period.
+	Section \ref{sec:preliminaries} goes through the preliminaries about QC and software testing. Section \ref{sec:LiteratureReview} will review the literature and relatively recent research around software testing with quantum programs and machine learning algorithms. Section \ref{sec:Metamorphic_Relations_for_Quantum_Support_Vector_Machine} will provide the mechanism of finding metamorphic relations along with validating them. Section \ref{sec:evaluation} evaluates the effectiveness of our metamorphic relations. Section \ref{sec:conclusion} draws a conclusion to this work and shows the work plan for the next period.
 	
 	
-	\section {Preliminaries}
+	\section{Preliminaries}
 	\label{sec:preliminaries}
 	
 	\subsection{Quantum Computing}
 	
-	Quantum Computers use qubits to represent information and apply quantum gates on the qubits to transform their states. Below, the states for $0$ and $1$ are represented using kets, where a ket is a vector:
+	Quantum computers use qubits to represent information and apply quantum gates on the qubits to transform their states. Below, the states for $0$ and $1$ are represented using kets, where a ket is a vector:
 	
 	\begin{multicols}{2}
 		\begin{equation*}
@@ -157,7 +157,7 @@
 		\end{equation*}
 	\end{multicols}
 	
-	In Quantum Computing qubits can be in a superposition state until measured. Superposition is a property that indicates that the qubit is in a linear combination of different states at once. The general formula of a superposition is as follows:
+	In Quantum computing, qubits can be in a superposition state until measured. Superposition is a property that indicates that the qubit is in a linear combination of different states at once. The general formula of a superposition is as follows:
 	
 	\begin{align*}
 		\ket{\Psi} &= \alpha\ket{0} + \beta\ket{1} 
@@ -187,7 +187,7 @@
 			\hline
 			\multicolumn{4}{|c|}{CNOT gate} \\ [0.5ex]
 			\hline
-			\multicolumn{2}{|c|}{Input} & \multicolumn{2}{c|}{output} \\ [0.5ex] 
+			\multicolumn{2}{|c|}{Input} & \multicolumn{2}{c|}{Output} \\ [0.5ex] 
 			\hline
 			\multicolumn{1}{|c|}{X} & \multicolumn{1}{|c|}{Y} & \multicolumn{1}{|c|}{X} & \multicolumn{1}{|c|}{X $\oplus$ Y} \\ [0.5ex] 
 			\hline
@@ -215,7 +215,7 @@
 		\end{bmatrix*}\\
 	\end{equation}
 	
-	Hadamard can be used to put any qubit in a superposition. If it takes $\ket{0}$, then the output will be 
+	The Hadamard can be used to put any qubit in a superposition. If it takes $\ket{0}$, then the output will be 
 	$\frac{1}{\sqrt{2}} (\ket{0} +\ket{1})$. And if the input is $\ket{1}$, then the output will be $\frac{1}{\sqrt{2}} (\ket{0} -\ket{1})$. And if combined with a CNOT gate, an entanglement between two qubits can be generated. Both superposition and entanglement phenomena are the reasons why quantum computers can execute algorithms much faster than classical computers \cite{9357505}.
 	
 	Other quantum gates are as follows:
@@ -226,18 +226,18 @@
 	\end{itemize}
 	The five aforementioned gates can be used to approximately create any quantum circuit. 
 	
-	Furthermore, Quantum Fourier Transform (QFT) is one of the building blocks in quantum computers and many advanced algorithms are based on it, but it needs quantum computers that are immune to noise. QFT is represented for any basis state $J$ as:
+	Furthermore, the Quantum Fourier Transform (QFT) is one of the building blocks in quantum computers and many advanced algorithms are based on it, but it needs quantum computers that are immune to noise. QFT is represented for any basis state $J$ as:
 	
 	\begin{equation}
 		\label{eqn:equation2}
 		QFT\ket{j} = \frac{1}{\sqrt{2}} \sum_{k=0}^{2^n-1} e^\frac{2\pi ijk}{2n} \ket{k}
 	\end{equation}
 	
-	Quantum Phase Estimation (QPE) is based on QFT and it allows us to find the eigenvalue of an eigenvector for a given matrix. There are many other advanced quantum algorithms. However due to the limitations of NISQ devices, many algorithms are being developed as NISQ algorithms to be implemented in the near term e.g., Quantum Approximate Optimization Algorithm (QAOA), and Variational Quantum Eigensolver (VQE). 
+	The Quantum Phase Estimation (QPE) is based on QFT, and it allows us to find the eigenvalue of an eigenvector for a given matrix. There are many other advanced quantum algorithms. However, due to the limitations of NISQ devices, many algorithms are being developed as NISQ algorithms to be implemented in the near term e.g., Quantum Approximate Optimization Algorithm (QAOA), and Variational Quantum Eigensolver (VQE). 
 	
 	\subsection{Quantum Machine Learning (QML) \& Quantum Support Vector Machines (QSVM) }
 	
-	Some of the Machine Learning (ML) algorithms can utilize QC capabilities to enhance their efficiency, specifically on complex datasets \cite{electronics12112379} \cite{maouaki2024quantumsupportvectormachine}. Like any QC program/algorithm, QML algorithms can vary based on the implementation complexity. Some can be realized with a hybrid system using quantum along with classical computers and by using NISQ devices, and some others might need Fault-Tolerant quantum computers (FTQC). One of the promising QML algorithms is Quantum Support Vector Machines (QSVM), since it is using a kernel that instead of needing an intensive classical computational power, it can utilize a suitable quantum kernel. Next we will elaborate on how Support Vector Machine (SVM) works and accordingly how QSVM works.
+	Some of the machine learning (ML) algorithms can utilize QC capabilities to enhance their efficiency, specifically on complex datasets \cite{electronics12112379} \cite{maouaki2024quantumsupportvectormachine}. Like any QC program/algorithm, QML algorithms can vary based on the implementation complexity. Some can be realized with a hybrid system using quantum along with classical computers and by using NISQ devices, and some others might need fault-tolerant quantum computers (FTQC). One of the promising QML algorithms is Quantum Support Vector Machines (QSVM), since it is using a kernel that instead of needing an intensive classical computational power, it can utilize a suitable quantum kernel. Next we will elaborate on how Support Vector Machine (SVM) works and accordingly how QSVM works.
 	
 	For a binary classification problem, we have a dataset of $N$ points $(\vec{x}_i, y_i)$, where $\vec{x}_i$ is a feature vector and the class label is $y_i \in \{-1, +1\}$.
 	
@@ -253,7 +253,7 @@
 	\]
 	The margin $M$ is the distance between the hyperplane and the closest data points from all classes. It can be shown to be $M = \frac{2}{\|\vec{w}\|}$. To maximize the margin, we must minimize $\|\vec{w}\|$. It's convenient mathematically to minimize the equivalent expression $\frac{1}{2}\|\vec{w}\|^2$.
 	
-	And for The Optimization Problem of a hard margin, for a dataset that is perfectly linearly separable, we can find the optimal hyperplane by solving a constrained optimization problem.
+	For the optimization problem of a hard margin, for a dataset that is perfectly linearly separable, we can find the optimal hyperplane by solving a constrained optimization problem.
 	
 	\textbf{Minimize:}
 	\[
@@ -265,7 +265,7 @@
 	\]
 	This constraint ensures all points are correctly classified and lie outside the margin. The points for which the equality $y_i(\vec{w} \cdot \vec{x}_i - b) = 1$ holds are the critical support vectors.
 	
-	We also need to deal with Non-Separable Data (Soft Margin) because real-world data is often not perfectly separable. To handle this, we introduce a slack variable $\xi_i \ge 0$ for each data point, which allows some points to be within the margin or misclassified, but at a cost.
+	We also need to deal with non-separable data (soft margin) because real-world data is often not perfectly separable. To handle this, we introduce a slack variable $\xi_i \ge 0$ for each data point, which allows some points to be within the margin or misclassified, but at a cost.
 	
 	The optimization problem becomes:
 	\textbf{Minimize:}
@@ -301,15 +301,16 @@
 	
 	\subsection{Software Testing (Metamorphic Testing, mutation analysis and statistical testing)}
 	
-	Prior to any software development, first the requirements are gathered and then translated to specifications i.e., how those requirements will be met. After that, the quality of the software is assessed through verification and validation methods. Software verification is the procedure of checking if the software is matching the specification. Software validation is the procedure of checking if the specifications reflect the requirements. Moreover, software testing is categorized into functional testing and non-functional testing.
+	Prior to any software development, the requirements are gathered and then translated to specifications i.e., how those requirements will be met. After that, the quality of the software is assessed through verification and validation methods. Software verification is the procedure of checking if the software is matching the specification. Software validation is the procedure of checking if the specifications reflect the requirements. Moreover, software testing is categorized into functional testing and non-functional testing.
 	
-	On one hand software functional testing involves unit testing that tests isolated parts of the software, integration testing that tests the parts together and system testing. On the other hand, software non-functional testing includes performance testing, load testing, security testing.
+	On one hand, software functional testing involves unit testing that tests isolated parts of the software, integration testing that tests the parts together and system testing. On the other hand, software non-functional testing includes performance testing, load testing, and security testing.
 	
-	When it comes to Machine Learning (ML) testing, a new type of testing is introduced, namely fairness testing. In ML testing, along with fairness testing, there are other important aspects to be tested such as performance testing, robustness testing, and accuracy testing. These four important tests are all classified as non-functional tests. Fairness testing is focused on revealing any bias that might exist in the ML program. Performance testing is about checking the stability and speed of the program. Accuracy testing is the evaluation between the measured outputs and the actual output i.e., the data in real life. Robustness testing is testing the program's ability to deal with expected inputs. Metamorphic Relations can be used to assess these categories based on the relation used. For example, transformation relations can be used for the system's stability against small changes for robustness testing, or for performance testing to check if the system scales as expected.
+	When it comes to Machine Learning (ML) testing, a new type of testing is introduced, namely fairness testing. In ML testing, along with fairness testing, there are other important aspects to be tested such as performance testing, robustness testing, and accuracy testing. These four important tests are all classified as non-functional tests. Fairness testing is focused on revealing any bias that might exist in the ML program. Performance testing is about checking the stability and speed of the program. Accuracy testing is the evaluation between the measured outputs and the actual output i.e., the data in real life. Robustness testing is testing the program's ability to deal with expected inputs. Through Metamorphic Testing, we can use metamorphic relations to assess these categories. For example, transformation relations can be used for the system's stability against small changes for robustness testing, or for performance testing to check if the system scales as expected. More details on metamorphic Testing are in section \ref{sec:LiteratureReview-Metamorphic-Testing}.
+ 
 	
 	Software testing is important to ensure the quality of a program, and that there are no errors that might arise in the production environments. The field of quantum software testing is relatively new \cite{paltenghi2024surveytestinganalysisquantum} \cite{10.1145/3712002} and even more niche for QML algorithms \cite{zaman2025surveyquantummachinelearning} \cite{2021APS..MARS32013L}. Hence, the focus of the research is applying software testing methods on QML like QSVM. 
-	
-	One of the predominant software testing methods is Metamorphic Testing (MT). In essence, MT is a convenient method to test complicated systems as black boxes. MT relies on metamorphic relations (MRs). These MRs are created to relate two inputs in a way such that we can reason about the relation between their corresponding outputs. If the relation between two outputs does not hold then we can conclude that there is a bug in the SUT. For mutation analysis, mutations are created from the original program by presenting errors, based on mutation operators, in the original source code. Below is Table \ref{tab:mutation_analysis} showing the possible results for each mutant after testing:
+ 
+ For mutation analysis, mutations are created from the original program by presenting errors, based on mutation operators, in the original source code. Below is Table \ref{tab:mutation_analysis} showing the possible results for each mutant after testing:
 	
 	\begin{table}[h!]
 		\centering
@@ -327,7 +328,7 @@
 		\end{tabular}
 	\end{table}
 	
-	And, statistical testing is used to determine if there are any statistically significant differences between the data used in testing or due to a random chance, based on p-value. The test is structured around two competing claims regarding a population parameter (e.g., the mean, $\mu$):
+	Statistical testing is used to determine if there are any statistically significant differences between the data used in testing or due to a random chance, based on p-value. The test is structured around two competing claims regarding a population parameter (e.g., the mean, $\mu$):
 	
 	\begin{itemize}
 		\item[$\bullet$] \textbf{The Null Hypothesis ($\mathbf{H_0}$):} The statement of \textbf{no effect, no difference, or no relationship}. This is assumed to be true until strong evidence proves otherwise.
@@ -340,23 +341,25 @@
 		The $p$-value is the probability of observing a test statistic result \textbf{as extreme as, or more extreme than}, the one you observed in your sample, \textit{assuming the null hypothesis ($\mathbf{H_0}$) is true}.
 	\end{quote}
 	
-	A decision is made by comparing the $p$-value to the predetermined \textbf{significance level ($\boldsymbol{\alpha}$)}, typically set at $0.05$. If p-value is smaller than $\boldsymbol{\alpha}$ then there is a statistical difference between the data used and the null hypothesis is rejected while the alternative hypothesis is supported by this result. Otherwise, the null hypothesis is not rejected which means there is no statistical difference between the data used or there is not enough evidence to support the alternative hypothesis.
+	A decision is made by comparing the $p$-value to the predetermined \textbf{significance level ($\boldsymbol{\alpha}$)}, typically set at $0.05$. If the p-value is smaller than $\boldsymbol{\alpha}$ then there is a statistical difference between the data used and the null hypothesis is rejected while the alternative hypothesis is supported by this result. Otherwise, the null hypothesis is not rejected which means there is no statistical difference between the data used or there is not enough evidence to support the alternative hypothesis.
 	
 	\section{Literature Review}
 	\label{sec:LiteratureReview}
 	Software testing is an essential pillar of software engineering, and is used to confirm that programs behave as expected. In this literature review, we analyze relevant research on Metamorphic Testing (MT) in general, on Quantum Computing and on Machine Learning.
 	
 	\subsection{Metamorphic Testing}
+		\label{sec:LiteratureReview-Metamorphic-Testing}
+	
 	
 	Software testing relies on test oracles to test the correctness of programs. The test oracle problem refers to the lack of program specifications, i.e., the expected output for each input, as the "ground truth" to verify the results. There are programs that can suffer from the test oracle problem, i.e., lack of program specifications. In these programs the exact expected output is hard to determine and therefore we need methods to address the test oracle problem. 
 	
-	Metamorphic testing (MT) is a property-based testing method introduced by Chen \cite{mt1998}. Metamorphic testing has gained popularity in testing complex systems, e.g., machine learning. Metamorphic testing relies on using metamorphic relations that define how the output will change if the input changes, instead of requiring explicit output values \cite{xu2024mrscoutautomatedsynthesismetamorphic}.
+	One of the predominant software testing methods is Metamorphic Testing (MT). Metamorphic testing (MT) is a property-based testing method introduced by Chen \cite{mt1998}. Metamorphic testing has gained popularity in testing complex systems, e.g., machine learning. In essence, MT is a convenient method to test complicated systems as black boxes. MT relies on metamorphic relations (MRs). These MRs are created to relate two inputs in a way such that we can reason about the relation between their corresponding outputs \cite{xu2024mrscoutautomatedsynthesismetamorphic}. If the relation between two outputs does not hold then we can conclude that there is a bug in the SUT.
 	
-	A practical example is the work of Mao et al. \cite{cmao2024}, where the authors assessed the use of metamorphic relations in recommender systems by empirical evaluation on open-source libraries with effective outcomes. However, the Metamorphic Relations (MRs) used in the work of Mao et al. \cite{cmao2024} are designed specifically for recommender systems. Therefore, while these MRs give a good example of MRs but would not be relevant to our work.
+	A practical example is the work of Mao et al. \cite{cmao2024}, where the authors assessed the use of metamorphic relations in recommender systems by empirical evaluation on open-source libraries with effective outcomes. However, the Metamorphic Relations (MRs) used in the work of Mao et al. \cite{cmao2024} are designed specifically for recommender systems. Therefore, while these MRs provide a good example of MRs they are not relevant to our work.
 	
 	\subsection{Metamorphic Testing on Quantum Computing}
 	
-	When it comes to Quantum computing (QC), its applications are stochastic because of the inherent noise in its hardware. Moreover, the oracle problem is more prominent due to the probabilistic nature of quantum measurements. In this context, metamorphic testing overcomes the measurement problem, as a viable solution \cite{rabreu2022}. The paper confirms the accuracy of metamorphic testing in identifying bugs in quantum computing programs. 
+	When it comes to quantum computing (QC), its applications are stochastic because of the inherent noise in its hardware. Moreover, the oracle problem is more prominent due to the probabilistic nature of quantum measurements. In this context, metamorphic testing overcomes the measurement problem, as a viable solution \cite{rabreu2022}. The paper confirms the accuracy of metamorphic testing in identifying bugs in quantum computing programs. 
 	
 	Building on this, \cite{Paltenghi2023} MorphQ is a framework for testing the Qiskit platform. MorphQ shows a significant advancement in quantum computing testing and introduces metamorphic testing as a powerful tool for quantum computing validation. 
 	
@@ -385,7 +388,7 @@
 		\end{tabular}
 	\end{table}
 	
-	Moreover, they suggest doing more research on automating MRs generation and statistical MR testing. This paper gave a proper introduction to the challenges with applying metamorphic testing on machine learning algorithms in general and that helped us to start working on QSVM. 
+	Moreover, they suggest doing more research on automating MRs generation and MRs statistical testing. This paper gave a proper introduction to the challenges with applying metamorphic testing on machine learning algorithms in general and that helped us to start working on QSVM. 
 	
 	Expanding on this, Kang \cite{dkang2022} explores a combined approach by incorporating fuzz testing i.e., using random invalid inputs to find bugs, with metamorphic testing along with automated test case generation. The paper proposes a formal model along with discussing issues affecting metamorphic testing such as noise. This work provided a foundational context for mutation creation.
 	
@@ -393,19 +396,19 @@
 	
 	Furthermore, Santos et al. \cite{ssantos2020} focus on using metamorphic testing with machine learning applications in healthcare applications specifically on k-nearest neighbors on breast cancer Wisconsin (diagnostic) dataset. Out of the eleven metamorphic relations, nine metamorphic relations supported that the model is consistent in its behavior. The usage of statistical testing was inspired initially from this paper.
 	
-	Turning to the autonomous driving domain, Deng et al. \cite{ydeng2023} introduce using rule-based metamorphic testing framework to test autonomous driving systems, and how this approach outperforms existing tools like DeepTest and DeepRoad in finding abnormal behaviors in the model, in compound scenarios.	 Deng et al. \cite{ydeng2023} apply testing on the system as a pipeline by relying on end-to-end transformation effect, which motivated us to do the same.
+	Turning to the autonomous driving domain, Deng et al. \cite{ydeng2023} introduce a rule-based metamorphic testing framework to test autonomous driving systems, and how this approach outperforms existing tools like DeepTest and DeepRoad in finding abnormal behaviors in the model in compound scenarios. Deng et al. \cite{ydeng2023} apply testing on the system as a pipeline by relying on end-to-end transformation effect, which motivated us to do the same.
 	
 	In another approach, Dwarakanath et al. \cite{Dwarakanath2018}, apply metamorphic testing by injecting bugs by using a framework named MutPy, on two systems which are support vector machines and ResNet classifier (neural networks based classifier). The work shows adequate results and concludes that metamorphic testing can be used as a pre-evaluation tool before moving to costly tools. We applied mutation analysis which is based on the idea of injecting bugs, as provided in Dwarakanath et al. \cite{Dwarakanath2018} paper.
 	
-	Moreover, Jia et al. \cite{mjia2020} focus on combining metamorphic relations in a compositional way to enhance bug detection. This work provides results of compositional metamorphic relations having accuracy of 100\% in detecting bugs compared to the rate of one-dimensional (solo) metamorphic relation being 86\%. The compositional approach is applicable to our work and can be considered in future.
+	Moreover, Jia et al. \cite{mjia2020} focus on combining metamorphic relations in a compositional way to enhance bug detection. This work provides results of compositional metamorphic relations having an accuracy of 100\% in detecting bugs compared to the rate of one-dimensional (solo) metamorphic relation being 86\%. The compositional approach is applicable to our work and can be considered in future.
 	
-	Rehman and Srinivasan \cite{frehman2023} give an overview of using MRs with machine learning and elaborated on the challenges without much focus on testing supervised algorithms, which as a result is not linked directly to our work. Moreover, Kang's work \cite{dkang2022} focuses on joining fuzz testing and metamorphic testing with two MRs definitions. While this can be considered an option in future, but the current work is initially to just apply metamorphic testing. Furthermore, Xiao et al. \cite{dciao2022} target deep learning compilers and not QSVM particularly, which is the system under test in our work. Deng et al.'s \cite{ydeng2023} work is focused on MRs for autonomous driving and this is irrelevant to the test in our work. Jia et al. \cite{mjia2020} is combining MRs in a compositional manner, which inspired our work to be able to use more than one MR at once.
+	Rehman and Srinivasan \cite{frehman2023} give an overview of using MRs with machine learning and elaborated on the challenges without much focus on testing supervised algorithms, which as a result is not linked directly to our work. Moreover, Kang's work \cite{dkang2022} focuses on joining fuzz testing and metamorphic testing with two MR definitions. While this can be considered an option in the future, the current work is initially to just apply metamorphic testing. Furthermore, Xiao et al. \cite{dciao2022} target deep learning compilers and not QSVM particularly, which is the system under test in our work. Deng et al.'s \cite{ydeng2023} work is focused on MRs for autonomous driving which is irrelevant to the test in our work. Jia et al. \cite{mjia2020} is combining MRs in a compositional manner, which inspired our work to be able to use more than one MR at once.
 	
 	Santos et al. \cite{ssantos2020} and Dwarakanath et al.'s \cite{Dwarakanath2018} works were very influential to our work, and particularly the latter. The five SVM MRs used in this work were inspired by Dwarakanath et al. work \cite{Dwarakanath2018}.
 	
 	\subsection{Testing Quantum Machine Learning}
 	
-	To the best of our knowledge, the field of testing quantum machine learning algorithms is still unexplored. And, this field can be traversed by starting with testing quantum support vector machines, and potentially later on a quantum neural networks algorithm, as an advanced step. In general, quantum machine learning algorithms face the aforementioned problems when it comes to testing due to their non-deterministic and probabilistic behavior. It was shown that metamorphic testing is very effective in testing such systems as a black box and therefore this is a good research area to be addressed.
+	To the best of our knowledge, the field of testing quantum machine learning algorithms is still unexplored. This field can be traversed by starting with testing quantum support vector machines, and potentially later on a quantum neural networks algorithm, as an advanced step. Quantum machine learning algorithms face significant verification and debugging challenges due to their non-deterministic probabilistic behavior. It was shown that metamorphic testing is very effective in testing such systems as a black box and therefore this is a good research area to be addressed.
 	
 	
 	\section{Metamorphic Relations for Quantum Support Vector Machine}
@@ -415,11 +418,9 @@
 	
 	\subsubsection{Finding Metamorphic Relations}
 	
-	Our initial endeavor focused on finding System-Level Metamorphic Relations, which we subsequently advanced to the kernel level because the results from the System-Level Metamorphic Relations were not promising. For system-level MRs to be used, we have two categories of MRs, which are for SVM in general and for QC. The initial SVM MRs are taken from the work of Dwarakanath et al. \cite{Dwarakanath2018}. Most of the initial QC MRs have been taken by the work of Paltenghi et al. \cite{Paltenghi2023} with our addition of applying statistical testing. The kernel-level Metamorphic Relations were inspired by different papers, as mentioned in section \ref{sec:sys_mrs}.
+	Our methodology for finding Metamorphic Relations (MRs) for QSVM was divided into two main phases. Since QSVM is a combination of machine learning and quantum computing, we treated the whole system as one pipeline in phase one with system-level MRs. And in phase two, we componentized the system and focused on the quantum component more with kernel-level MRs. For system-level MRs, we have two categories of MRs, which are for SVM and for QC. The initial SVM MRs are taken from the work of Dwarakanath et al. \cite{Dwarakanath2018}. Most of the initial QC MRs have been taken by the work of Paltenghi et al. \cite{Paltenghi2023} with our addition of applying statistical testing. The kernel-level Metamorphic Relations were extracted from different papers, as mentioned in section \ref{sec:kernel_mrs}.
 	
-	These system-level metamorphic relations all assess the output accuracy. In general,
-	metamorphic relations can be classified based on the type of transformation they apply.
-	Following the taxonomy proposed by \cite{8785455}, we identify two key patterns
+	These system-level metamorphic relations all assess the output accuracy. Metamorphic relations can be classified based on the type of transformation they apply. Following the taxonomy proposed by \cite{8785455}, we identified two key patterns
 	as shown in Table \ref{tab:mr_patterns}.
 	
 	\begin{table}[h!]
@@ -456,42 +457,38 @@
 	deriving new MRs for QSVM or similar systems.
 	
 	\begin{enumerate}
-		\item \textbf{Data Transformation:} MRs derived from invariance properties of the
+		\item \textbf{Data Transformation (Maps to MRIP):} This is a category that utilizes directly the input patterns MRIP, where MRs are derived from invariance properties of the
 		ML algorithm under changes to the input data. This category
 		is inspired by the work of Dwarakanath et al. \cite{Dwarakanath2018} and Santos
 		et al. \cite{ssantos2020}, and includes our system-level MR\#1--\#5 (e.g., scaling,
 		rotation, permutation). New MRs can be found by identifying additional
 		operations (e.g., translation, reflection) that preserve the algorithm functionality.
 		
-		\item \textbf{Quantum Circuit Equivalence:} MRs derived from equivalent
+		\item \textbf{Quantum Circuit Equivalence (Maps to MRIP):} MRs derived from semantic-preserving
 		modifications to the quantum circuit structure that preserve the unitary operator.
-		This category is inspired by Paltenghi et al. \cite{Paltenghi2023} and Garc\'ia
-		Gil \cite{gracia2024}, and includes our system-level MR\#6--\#11 (e.g., adding a
+		This category is inspired by Paltenghi et al. \cite{Paltenghi2023} and Garcia
+		Gil \cite{gracia2024}, and includes our system-level MR\#6--\#12 (e.g., adding a
 		quantum register, injecting null-effect operations). New MRs can be found by
-		identifying new changes to the circuit that will result in the same unitary.
+		identifying new changes to the circuit that will result in the same unitary. This category keeps the output invariant while it configures the input during apply equivalent changes to the circuit topology and this aligns with the MRIP pattern.
 		
-		\item \textbf{Mathematical Kernel Properties:} MRs derived from the formal
-		properties of inner products and kernel functions. This category is inspired by
+		\item \textbf{Mathematical Kernel Properties (Maps to MROP \& MRIP):} MRs derived from the formal properties of inner products and kernel functions. This category is inspired by
 		Schuld and Killoran \cite{schuld2019} and Xie et al. \cite{xie2011}, and includes
-		our kernel-level MR1--MR3 and MR12 (e.g., symmetry, identity, negation). New MRs
-		can be found from any formally provable property of the kernel function such as
-		positive semi-definiteness.
+		our kernel-level MR\#1--MR\#4 (e.g., symmetry, identity, negation). Relations like Identity ($K(x,x) = 1$) dictate an absolute expected output without transforming a prior data pair, mapping directly to Metamorphic Relations with Output Patterns (MROP). Conversely, properties like Symmetry ($K(x,y) = K(y,x)$) transform the input order, mapping to MRIP. New MRs can be found from any formally provable property of the kernel function such as positive semi-definiteness.
 		
-		\item \textbf{Encoding-Specific Properties:} MRs derived from the mathematical
-		structure of the chosen feature maps. This category is inspired by
-		Havl\'i\v{c}ek et al. \cite{havlicek2019} and M\"ott\"onen et al.
-		\cite{mottonen2004}, and includes our kernel-level MR4--MR11 and MR13--MR14 (e.g.,
-		angle periodicity, amplitude scaling invariance, bit inversion). New MRs can be
-		found by studying the mathematical constraints of feature maps.
+		\item \textbf{Embedding-Specific Properties (Maps to MRIP):} MRs derived from the mathematical
+		structure of the chosen feature maps. This category is inspired by Havlicek et al. \cite{havlicek2019} and Mottonen et al. \cite{mottonen2004}, and includes some kernel-level MRs like MR\#6, MR\#10, MR\#14. New MRs can be found by studying the mathematical constraints of feature maps.
+
 	\end{enumerate}
 	
 	
+	
+	
 	\subsubsection{Validating Metamorphic relations}
-	
+	\label{sec:validating_metamorphic_relations}
 
-To ensure the validity of the MRs, specifically the kernel-level MRs, we implemented a differential testing strategy \cite{mckeeman1998} known as the Golden Matrix approach as shown in Figure \ref{fig:golden_matrix_flow}. We verify the intermediate Kernel Matrix \cite{wang2021} on the data to identify which mutants are changing the kernel function drastically, and these caught mutants will be used to measure our Quantum Kernel Metamorphic Relations efficiency, as shown in Figure \ref{fig:golden_matrix_flow}. 	In system-level MRs, the workflow incorporated a comparison between the original model accuracy and the mutated model accuracy, and when the accuracy differs, then we proceeded with statistical testing, Figure \ref{fig:7}. This can be seen as a validation for both statistical testing and metamorphic relations at the same time rather than just validating metamorphic relations per se. Perhaps, we should have applied metamorphic relations without statistical testing to give them more proper validation.
-	
-	
+At the system-level, the validation starts with comparing the accuracy of the original model and the mutated model. If they are not equal then only at this case we proceed with statistical testing because this discrepancy doesn't mean a bug was found because machine learning training results might vary. The statistical testing incorporates cross validation as well to make sure the results are fair. Finally a MR is considered successful in detecting a fault and killing a mutant only if the accuracies differences are proven to be significantly different.
+
+At the kernel-level, to ensure the validity of the MRs, specifically the kernel-level MRs, we implemented a differential testing strategy \cite{mckeeman1998} known as the Golden Matrix approach as shown in Figure \ref{fig:golden_matrix_flow}. We verify the intermediate Kernel Matrix \cite{wang2021} on the data to identify which mutants are changing the kernel function drastically, and these caught mutants will be used to measure our Quantum Kernel Metamorphic Relations efficiency, as shown in Figure \ref{fig:golden_matrix_flow}. 
 	
 	\begin{figure}[ht!]
 		\centering
@@ -564,7 +561,7 @@ To ensure the validity of the MRs, specifically the kernel-level MRs, we impleme
 	\subsubsection{System-level Metamorphic Relations}
 	\label{sec:sys_mrs}
 	
-	We defined five system-level metamorphic relations mathematically to assess the overall machine learning classification robustness. These relations are categorized in two groups as below:
+	We defined twelve system-level metamorphic relations mathematically to assess the overall machine learning classification robustness. These relations are categorized in two groups of five system-level SVM-related MRs and seven system-level QC-related MRs. The first group consists of five system-level SVM-related MRs as shown below:
 
 		To formalize these relations, we define the original training dataset as $tr = \{(\mathbf{x}_i, y_i)\}_{i=1}^N$, where $\mathbf{x}_i \in \mathbb{R}^d$ represents the feature vectors and $y_i \in \{0, 1\}$ represents the labels. Let $f_{pre}(\mathbf{x})$ be the classifier trained on $tr$ evaluated at a test input $\mathbf{x}$. The modified training dataset is $tr'$, the modified test input is $\mathbf{x}'$, and the classifier for modified data is $f_{pre'}(\mathbf{x}')$.
 		
@@ -591,7 +588,7 @@ To ensure the validity of the MRs, specifically the kernel-level MRs, we impleme
 			$$ f_{pre'}(\mathbf{x}') = f_{pre}(\mathbf{x}) $$
 		\end{enumerate}
 		
-	In Figure \ref{fig:SVM_MRs}, we have the SVM related system-level metamorphic relations, which consists of four sub-figures. In Figure \ref{fig:sub-1-0}, QSVM classification is shown. With the first MR\#1 of scaling inputs, it is shown in Figure \ref{fig:sub-1-1} that the classification are not affected. Similarly with MR\#2, rotating all the inputs by the same angle will not affect the classification as shown in Figure \ref{fig:sub-1-2}. Furthermore, from MR\#3 to MR\#5, they are outlined in Figure \ref{fig:sub-1-3}.
+	In Figure \ref{fig:SVM_MRs}, we have the SVM-related system-level metamorphic relations, which consists of four sub-figures. In Figure \ref{fig:sub-1-0}, QSVM classification is shown. With the first MR\#1 of scaling inputs, it is shown in Figure \ref{fig:sub-1-1} that the classification are not affected. Similarly with MR\#2, rotating all the inputs by the same angle will not affect the classification as shown in Figure \ref{fig:sub-1-2}. Furthermore, from MR\#3 to MR\#5, they are outlined in Figure \ref{fig:sub-1-3}.
 	
 	
 	\begin{figure}[H]
@@ -625,7 +622,7 @@ To ensure the validity of the MRs, specifically the kernel-level MRs, we impleme
 		\begin{subfigure}{0.48\textwidth}
 			\centering
 			\includegraphics[width=\linewidth]{figures/mr_3_plot.png}
-			\caption{QSVM Classification with MR\#3, MR\#4, and MR\#5 }
+			\caption{QSVM Classification with MR\#3, MR\#4, and MR\#5}
 			\label{fig:sub-1-3}
 		\end{subfigure}
 		
@@ -633,10 +630,7 @@ To ensure the validity of the MRs, specifically the kernel-level MRs, we impleme
 		\label{fig:SVM_MRs}
 	\end{figure}
 	
-		Additionally, the seven QC-related metamorphic relations applied at the system level are:
-		
-		\paragraph{Feature Embedding \& Execution Metamorphic Relations}
-		To formalize these relations, we define the quantum kernel $K(\mathbf{x}, \mathbf{y})$ as the squared inner product of the embedded data states. For Amplitude Embedding, the state is $\Phi(\mathbf{x}) = \sum_{i=1}^{n} x_i \psi_i$. For Angle Embedding, the state is $\Psi(\mathbf{x}) = \sum_{i=1}^{n} r_i e^{i \theta_i(x_i)} \psi_i$. 
+		Then we got the second group of seven system-level MRs that are QC-related. To formalize these relations, we define the quantum kernel $K(\mathbf{x}, \mathbf{y})$ as the squared inner product of the embedded data states. For Amplitude Embedding, the state is $\Phi(\mathbf{x}) = \sum_{i=1}^{n} x_i \psi_i$. For Angle Embedding, the state is $\Psi(\mathbf{x}) = \sum_{i=1}^{n} r_i e^{i \theta_i(x_i)} \psi_i$. The seven system-level MRs that are QC-related are as below:
 		
 		\begin{enumerate}
 			\setcounter{enumi}{5}
@@ -688,7 +682,7 @@ To ensure the validity of the MRs, specifically the kernel-level MRs, we impleme
 		\end{enumerate}
 	
 	
-	In Figure \ref{fig:QC_MRs}, we display the angle embedding feature map and the metamorphic relations related to it as shown in the eight sub-figures. In Figure \ref{fig:sub-2-0}, the original circuit is shown. In Figure \ref{fig:sub-2-1}, the circuit original outcome should not be changed by adding an extra quantum register as a wire. In Figures \ref{fig:sub-2-2} and \ref{fig:sub-2-3}, adding two of the same gates in sequence or applying a general gate with an equivalent parameter respectively will result in the same functionality of the QC circuit. Then in Figure \ref{fig:sub-2-4}, it shows that changing the device to transpile an equivalent circuit does not change the process. Moreover, in Figure \ref{fig:sub-2-5}, changing the circuit optimization level as a metamorphic relation keeps the circuit the same. And when we reverse the QC wires as MR\#11 as shown in Figure \ref{fig:sub-2-7} or when we switch the inner product inputs for the quantum kernel, we are not changing the QSVM functionality which means that the classification outcome remains the same.
+	In Figure \ref{fig:QC_MRs}, we display the angle embedding feature map and the metamorphic relations related to it as shown in the eight sub-figures. In Figure \ref{fig:sub-2-0}, the original circuit is shown. In Figure \ref{fig:sub-2-1}, the circuit original outcome should not be changed by adding an extra quantum register as a wire. In Figures \ref{fig:sub-2-2} and \ref{fig:sub-2-3}, adding two of the same gates in sequence or applying a general gate with an equivalent parameter respectively will result in the same functionality of the QC circuit. Then in Figure \ref{fig:sub-2-4}, it shows that changing the device to transpile an equivalent circuit does not change the process. Moreover, in Figure \ref{fig:sub-2-5}, changing the circuit optimization level as a metamorphic relation keeps the circuit the same. And when we reverse the QC wires as shown in Figure \ref{fig:sub-2-7} or when we switch the inner product inputs for the quantum kernel as shown in Figure \ref{fig:sub-2-8}, we are not changing the QSVM functionality which means that the classification outcome remains the same.
 	
 	\begin{figure}[!ht]
 		\centering
@@ -766,44 +760,42 @@ To ensure the validity of the MRs, specifically the kernel-level MRs, we impleme
 	\subsubsection{Kernel-Level Metamorphic Relations}
 	\label{sec:kernel_mrs}
 	
-	Transitioning to the quantum kernel, we identified 14 kernel-level Metamorphic Relations to targeting the target kernel evaluation. They are divided into three validation groups:
+	Transitioning to the quantum kernel, we identified 14 kernel-level Metamorphic Relations targeting the kernel evaluation. They are divided into three validation groups based on their origin:
 	
 	\paragraph{Group A: General Mathematical Relations}
 	These are based on the properties of inner product and kernels, which are implementation independent \cite{schuld2019}.
 	\begin{itemize}
-		\item \textbf{MR1 (Symmetry)}: $K(x,y) = K(y,x)$ 
-		\item \textbf{MR2 (Identity)}: $K(x,x) = 1$
-		\item \textbf{MR3 (Permutation)}: Invariant to the simultaneous shuffling of features in both input vectors \cite{xie2011}
+		\item \textbf{MR1 (Symmetry)}: $K(\mathbf{x},\mathbf{y}) = K(\mathbf{y},\mathbf{x})$ 
+		\item \textbf{MR2 (Identity)}: $K(\mathbf{x},\mathbf{x}) = 1$
+		\item \textbf{MR3 (Permutation)}: Invariant to the simultaneous shuffling of features in both input vectors \cite{xie2011}.
+		\item \textbf{MR4 (Negation)}: $K(-\mathbf{x},-\mathbf{y}) \approx K(\mathbf{x},\mathbf{y})$. Invariant to sign inversion across all features for all standard embedding feature maps \cite{xie2011}.
+		\item \textbf{MR5 (Feature Sensitivity)}: A metamorphic change relation ensuring every input dimension is functionally active. Mathematically, let $\mathbf{x}^{(i \to 0)}$ represent vector $\mathbf{x}$ with its $i$-th feature forced to zero. For any $x_i \neq 0$, the relation is defined as: $K(\mathbf{x}^{(i \to 0)}, \mathbf{y}) \neq K(\mathbf{x}, \mathbf{y})$ \cite{Segura2016}.
 	\end{itemize}
 	
 	\paragraph{Group B: Quantum-Specific Relations}
-	These relations adopt the concept of Quantum metamorphic relations defined in the MorphQ framework \cite{Paltenghi2023}. They target properties unique to quantum circuits.
+	These relations adopt the concept of Quantum metamorphic relations defined in the MorphQ framework \cite{Paltenghi2023}. They target properties unique to quantum circuits and physical qubit wiring.
 	
 	\begin{itemize}
-		\item \textbf{MR4 (Noise Stability)}: Evaluates robustness against small input perturbations; small $\epsilon$ shifts in $x$ should not cause divergent kernel values
-		\item \textbf{MR5 (Structural Orthogonality)}: Verifies that orthogonal quantum states remain non-overlapping \cite{schuld2019}: $K(x, x_{\perp}) \approx 0$
-		\item \textbf{MR6 (Dual Consistency)}: Validates that reversing the input feature order $K(rev(x), rev(y))$ maintains the same relationship as $K(x, y)$, testing the consistency of the entanglement chain \cite{Paltenghi2023}
-		\item \textbf{MR7 (Qubit Permutation)}: Ensures that changing the qubit mapping (wire map) does not alter the kernel output \cite{Paltenghi2023}
+		\item \textbf{MR6 (Noise Stability)}: Evaluates the system's robustness against small input changes. Mathematically, if we apply a small shift $\boldsymbol{\delta}$ to the input feature $\mathbf{x}$, the quantum kernel value should not change beyond a tolerance threshold $\epsilon$:
+		$$ |K(\mathbf{x} + \boldsymbol{\delta}, \mathbf{y}) - K(\mathbf{x}, \mathbf{y})| \le \epsilon $$
+		We determined $\epsilon$ to be between $0.01$ and $0.05$. This range was chosen based on the natural quantum shot noise (which is roughly $1/\sqrt{\text{shots}}$). Setting $\epsilon$ in this range ensures we do not flag normal quantum randomness as a bug (false positives), while still keeping the SVM hyperplane stable.
+		\item \textbf{MR7 (Structural Orthogonality)}: Verifies that orthogonal quantum states remain non-overlapping \cite{schuld2019}: $K(\mathbf{x}, \mathbf{x}_{\perp}) \approx 0$
+		\item \textbf{MR8 (Dual Consistency)}: Validates that reversing the input feature order maintains the same relationship, testing the consistency of the entanglement chain \cite{Paltenghi2023}: $K(\text{rev}(\mathbf{x}), \text{rev}(\mathbf{y})) \approx K(\mathbf{x}, \mathbf{y})$
+		\item \textbf{MR9 (Qubit Permutation)}: Ensures that changing the qubit mapping (wire map) does not alter the kernel output \cite{Paltenghi2023}.
+		\item \textbf{MR10 (Feature Rotation)}: Invariant to cyclic shifts of the feature indices within the input vector, testing the consistency of the physical wire mapping \cite{LaRose2020}. Mathematically, let $C_k(\mathbf{x})$ be a cyclic shift operator that rotates the elements of vector $\mathbf{x}$ by $k$ positions: $K(C_k(\mathbf{x}), C_k(\mathbf{y})) \approx K(\mathbf{x}, \mathbf{y})$.
 	\end{itemize}
 	
-	
 	\paragraph{Group C: Feature-Embedding Specific Relations}
-	These relations evaluate properties that arise from the mathematical structure of the chosen data encoding strategy (Angle, Basis, or Amplitude) \cite{zaman2025surveyquantummachinelearning, schuld2018}.
+	These relations evaluate properties that arise from the mathematical constraints of the chosen data encoding strategy (Angle, Basis, or Amplitude) \cite{zaman2025surveyquantummachinelearning, schuld2018}. Because they exploit specific geometric structures, they uniquely fail if applied to the wrong embedding type.
 	
 	\begin{itemize}
-		\item \textbf{MR8 (Shift Invariance)} \textit{[Target: Angle Embedding]}: $K(x+c, y+c) \approx K(x,y)$. Adding a constant shifts both angles equally, preserving relative distance on the Bloch sphere. This fails for \textit{Amplitude} because linear shifts alter the geometric angle between vectors after normalization, and fails for \textit{Basis} as it introduces non-binary values. \cite{havlicek2019}
+		\item \textbf{MR11 (Shift Invariance)} \textit{[Target: Angle Embedding]}: $K(\mathbf{x}+c, \mathbf{y}+c) \approx K(\mathbf{x},\mathbf{y})$. Adding a constant shifts both angles equally, preserving relative distance on the Bloch sphere. This fails for \textit{Amplitude} because linear shifts alter the geometric angle between vectors after normalization, and fails for \textit{Basis} as it introduces non-binary values \cite{havlicek2019}.
 		
-		\item \textbf{MR9 (Periodicity)} \textit{[Target: Angle Embedding]}: $K(x+2\pi, y) \approx K(x,y)$. Rotation gates repeat their exact state every $2\pi$ radians. This fails for \textit{Amplitude} because adding $2\pi$ drastically changes the relative weighting of the state vector's components. Since the vector must be re-normalized, the resulting quantum state $\Phi(x')$ represents a completely different point in the Hilbert space. This also fails for \textit{Basis} as $x+2\pi$ is not a valid binary $\{0, 1\}$ input. \cite{Sweke2020, havlicek2019}
+		\item \textbf{MR12 (Periodicity)} \textit{[Target: Angle Embedding]}: $K(\mathbf{x}+2\pi, \mathbf{y}) \approx K(\mathbf{x},\mathbf{y})$. Rotation gates repeat their exact state every $2\pi$ radians. This fails for \textit{Amplitude} because adding $2\pi$ drastically changes the relative weighting of the state vector's components. Since the vector must be re-normalized, the resulting quantum state $\Phi(\mathbf{x}')$ represents a completely different point in the Hilbert space. This also fails for \textit{Basis} as $x+2\pi$ is not a valid binary $\{0, 1\}$ input \cite{Sweke2020, havlicek2019}.
 		
-		\item \textbf{MR10 (Bit Inversion)} \textit{[Target: Basis Embedding]}: $K(1-x, 1-y) \approx K(x,y)$. Inverting binary bits preserves the count of matching/mismatching bits. This fails for \textit{Angle} because non-linear entangling products (e.g., $x_1 x_2 \neq (1-x_1)(1-x_2)$) are reshuffled, and fails for \textit{Amplitude} as $1-x$ introduces cross-terms that change the geometric angle between normalized vectors. \cite{Dwarakanath2018}
+		\item \textbf{MR13 (Bit Inversion)} \textit{[Target: Basis Embedding]}: $K(1-\mathbf{x}, 1-\mathbf{y}) \approx K(\mathbf{x},\mathbf{y})$. Inverting binary bits preserves the count of matching/mismatching bits. This fails for \textit{Angle} because non-linear entangling products (e.g., $x_1 x_2 \neq (1-x_1)(1-x_2)$) are reshuffled, and fails for \textit{Amplitude} as $1-x$ introduces cross-terms that change the geometric angle between normalized vectors \cite{Dwarakanath2018}.
 		
-		\item \textbf{MR11 (Linear Scaling)} \textit{[Target: Amplitude Embedding]}: $K(cx, cy) \approx K(x,y)$. Data is normalized prior to state preparation, so scalars factor out ($\frac{c\mathbf{x}}{\|c\mathbf{x}\|} = \frac{\mathbf{x}}{\|\mathbf{x}\|}$). This fails for \textit{Angle} because scaling rotation angles changes the relative distance on the Bloch sphere, and fails for \textit{Basis} as scaling produces invalid non-binary states. \cite{mottonen2004}
-		
-		\item \textbf{MR12 (Negation)} \textit{[Common]}: $K(-x,-y) \approx K(x,y)$. Invariant to sign inversion across all features for all standard embedding feature maps. \cite{xie2011}
-		
-		\item \textbf{MR13 (Feature Rotation)} \textit{[Common]}: Invariant to cyclic shifts of the feature indices within the input vector, testing the consistency of the wire mapping. \cite{LaRose2020}
-		
-		\item \textbf{MR14 (Feature Sensitivity)} \textit{[Common]}: A metamorphic change relation where zeroing out a single feature must alter the resulting kernel value, ensuring every input dimension is functionally active. \cite{Segura2016}
+		\item \textbf{MR14 (Linear Scaling)} \textit{[Target: Amplitude Embedding]}: $K(c\mathbf{x}, c\mathbf{y}) \approx K(\mathbf{x},\mathbf{y})$. Data is normalized prior to state preparation, so scalars factor out ($\frac{c\mathbf{x}}{\|c\mathbf{x}\|} = \frac{\mathbf{x}}{\|\mathbf{x}\|}$). This fails for \textit{Angle} because scaling rotation angles changes the relative distance on the Bloch sphere, and fails for \textit{Basis} as scaling produces invalid non-binary states \cite{mottonen2004}.
 	\end{itemize}
 	
 	\section{Evaluating the Effectiveness of Metamorphic Relations}
@@ -811,7 +803,7 @@ To ensure the validity of the MRs, specifically the kernel-level MRs, we impleme
 	
 	\subsection{Research Questions}
 	
-		There are some research questions that inspired this work which are shown below. The research questions were derived from the gaps identified in the literature review(Section \ref{sec:LiteratureReview}). The literature shows that metamorphic testing is effective for classical ML \cite{Dwarakanath2018, ssantos2020} and for quantum computing programs \cite{Paltenghi2023, gracia2024}, but no work has applied it to quantum machine learning algorithms like QSVM. This raised the question of which MRs would be effective (RQ1) and whether existing SVM MRs would transfer to the quantum setting (RQ2). Finally, the low kill rate observed in our initial system-level experiments motivated investigating whether focusing on the quantum kernel alone would yield better results (RQ3).
+		The research questions were derived from the gaps identified in the literature review(Section \ref{sec:LiteratureReview}). The literature shows that metamorphic testing is effective for classical ML \cite{Dwarakanath2018, ssantos2020} and for quantum computing programs \cite{Paltenghi2023, gracia2024}, but no work has applied it to quantum machine learning algorithms like QSVM. This raised the question of which MRs would be effective (RQ1) and whether existing SVM MRs would transfer to the quantum setting (RQ2). Finally, the low kill rate observed in our first system-level experiment motivated investigating whether focusing on the quantum kernel alone would yield better results (RQ3).
 	
 
 	\begin{itemize}
@@ -848,7 +840,7 @@ To ensure the validity of the MRs, specifically the kernel-level MRs, we impleme
 		MTS = \frac{\{y^i_{test} \in y_{test},\ {\bar{M}} \in \bar{MS} \mid \text{isNonEqual} \ (M, (\bar{M_{0,0,0}}, \ldots, \bar{M_{K,J,V}}),\ x_{test}^i)\}}{\mid \bar{MS} \mid * \mid y_{test} \mid} 
 	\end{equation}
 	
-	Where $y^i_{test}$ is the testing data, $M$ is the model, and $\bar{M}$ is the modified data model. There are three factors to differentiate between the modified data models. First factor is $k$ that represents which k-fold data was used. Second factor is $j$ that represents which metamorphic relation (MR) is used, and $v$ that represents what value is used with the metamorphic relation. For example, if we pick k-fold of value 1, MR of value 1 which is multiplying all the data by a scalar of value $v$ and the picked scalar value was 5, then the model will be named as $M_{11,1,5}$. $x^i_{test}$ represents the inputs and $\mid \bar{MS} \mid$ is the number of all models. The MTS should be equal to 0 which indicates that no bugs were found in the implementation of QSVM. The p-value shows if the null hypothesis is more likely or the alternative hypothesis. In our experiment, the p-value threshold is $0.05$ and p-value has to be bigger than that to support the null hypothesis ($H_0$), which implies that there is no statistically significant difference between the accuracy of the original data and the modified data. The alternative hypothesis ($H_1$) states that a statistically significant difference exists.
+	Where $y^i_{test}$ is the testing data, $M$ is the model, and $\bar{M}$ is the modified data model. There are three factors to differentiate between the modified data models. The first factor is $k$ that represents which k-fold data was used. The second factor is $j$ that represents which metamorphic relation (MR) is used, and $v$ that represents what value is used with the metamorphic relation. For example, if we pick k-fold of value 1, MR of value 1 which is multiplying all the data by a scalar of value $v$ and the picked scalar value was 5, then the model will be named as $M_{11,1,5}$. $x^i_{test}$ represents the inputs and $\mid \bar{MS} \mid$ is the number of all models. The MTS should be equal to 0 which indicates that no bugs were found in the implementation of QSVM. The p-value shows if the null hypothesis is more likely or the alternative hypothesis. In our experiment, the p-value threshold is $0.05$ and p-value has to be bigger than that to support the null hypothesis ($H_0$), which implies that there is no statistically significant difference between the accuracy of the original data and the modified data. The alternative hypothesis ($H_1$) states that a statistically significant difference exists.
 	
 	Furthermore, we initially adopted noise factors in the experiment with system-level MRs to simulate real quantum computing noise, and we had four different types of noise to be implemented in Pennylane as follows:
 	\begin{itemize}
@@ -894,7 +886,7 @@ To ensure the validity of the MRs, specifically the kernel-level MRs, we impleme
 		\label{fig:3}
 	\end{figure}
 	
-	The QSVM, as shown in Figure \ref{fig:2}, takes any dataset and applies cross-validation to ensure that the ML training is generalized and to avoid any potential over-fitting that might occur. Afterwards, optionally Principal Component Analysis (PCA) can be applied to reduce the data dimensions, i.e., the number of features. Then before using QSVM quantum kernel, we need to map the classical inputs to qubits. This can be done using a feature map. We have used two types of feature maps in system-level metamorphic testing, which are: amplitude embedding and angle embedding. These are two most generic feature maps \cite{10493306}, and there are others like the ZZ feature map \cite{havlicek2019}, which is based on angle embedding feature map and can be used in future along with other feature maps. In amplitude embedding, the classical inputs are encoded in the quantum amplitude. If we have a given feature vector $\mathbf{x} \in \mathbb{R}^n$, the \textit{feature amplitude embedding} $\Phi: \mathbb{R}^n \to \mathbb{C}^m$ maps the features to a complex-valued space where amplitudes encode feature information:
+	The QSVM, as shown in Figure \ref{fig:2}, takes any dataset and applies cross-validation to ensure that the ML training is generalized and to avoid any potential over-fitting that might occur. Afterwards, optionally Principal Component Analysis (PCA) can be applied to reduce the data dimensions, i.e., the number of features. Then before using QSVM quantum kernel, we need to map the classical inputs to qubits. This can be done using a feature map. We have used two types of feature maps in system-level metamorphic testing, which are: amplitude embedding and angle embedding. These are the two most generic feature maps \cite{10493306}, and there are others like the ZZ feature map \cite{havlicek2019}, which is based on angle embedding feature map and can be used in future along with other feature maps. In amplitude embedding, the classical inputs are encoded in the quantum amplitude. If we have a given feature vector $\mathbf{x} \in \mathbb{R}^n$, the \textit{feature amplitude embedding} $\Phi: \mathbb{R}^n \to \mathbb{C}^m$ maps the features to a complex-valued space where amplitudes encode feature information:
 	
 	\begin{equation}
 		\Phi(\mathbf{x}) = \sum_{i=1}^{n} x_i \psi_i
@@ -949,7 +941,7 @@ To ensure the validity of the MRs, specifically the kernel-level MRs, we impleme
 	
 	After the data training is finished with the quantum kernel, we apply the testing data to calculate the model accuracy.
 	
-	To achieve sub-circuit mutation testing, we modified the code to be more expressive and explicit, and we have added a third feature map known as basis embedding to the test. Basis encoding maps binary inputs directly to the computational basis states of the qubits \cite{schuld2018}:
+	To achieve sub-circuit mutation testing, we modified the code to be more expressive and explicit, and we have added a third feature map known as basis embedding to the test. Basis embedding maps binary inputs directly to the computational basis states of the qubits \cite{schuld2018}:
 			$$ \mathbf{x} = \{x_1, x_2, \dots, x_N\} \in \{0,1\}^N \rightarrow |x_1 x_2 \dots x_N\rangle $$
 		
 		For the embeddings, we used explicit logic for the three feature maps to have more space for creating mutants. The code is outlined in Listing \ref{lst:qsvmHealthyCode}
@@ -1020,16 +1012,16 @@ To ensure the validity of the MRs, specifically the kernel-level MRs, we impleme
 	\subsection{Results}
 		\label{sec:results}
 		
-	The experiment code was in Python using Pennylane framework for QML, and Qiskit for QC. The data used was Wine Data from Table \ref{tab:Datasets}, since working with a larger dataset takes a lot of time with a local simulator. Then the setup included applying cross-validation of 16 i.e., k-fold values from 0 to 15, the MR\#1 which is scaling the data, and the scaling values were $[2,20)$ i.e., from 2 to 19. We applied the first two types of noise (Depolarizing channel noise and bit-flip noise) for values from 0.1 to 0.9.
+		In the beginning, we tested with the MR\#1 (data scaling) and MR\#2 (angle rotation) from system-level MRs without applying statistical testing and mutation analysis. The experiment code was in Python using Pennylane framework for QML, and Qiskit for QC. The data used was Wine Data from Table \ref{tab:Datasets}, since working with a larger dataset takes a lot of time with a local simulator. Then the setup included applying cross-validation of 16 i.e., k-fold values from 0 to 15, the MR\#1 which is scaling the data, and the scaling values were $[2,20)$ i.e., from 2 to 19. We applied the first two types of noise (Depolarizing channel noise and bit-flip noise) for values from 0.1 to 0.9. To implement noise, the device configuration must be transitioned from lightning.qubit to default.mixed, as illustrated in Figure \ref{fig:5}. For the future, to use a back-end device, the physical IBM quantum hardware can be accessed via the qiskit.remote device type (see Figure \ref{fig:5}).
+		
 
-	
 	\begin{figure}[H]
 		\includegraphics[height=9.2cm, width=\linewidth]{figures/accuracy_chart2.png}
 		\caption{Models Accuracy}
 		\label{fig:4}
 	\end{figure}
 	
-	As shown from \ref{fig:4}, all the models accuracy in the initial system-level phase with, Wine Data from Table \ref{tab:Datasets}, were identical, and even by adding different noise types and values, the accuracy remained the same. These findings suggest that the QSVM operates as a deterministic rather than a stochastic system, or alternatively, that the noise implementation in PennyLane (v0.41) lacks true stochasticity. To implement noise in this version, the device configuration must be transitioned from lightning.qubit to default.mixed, as illustrated in Figure \ref{fig:5}. While physical IBM quantum hardware can be accessed via the qiskit.remote device type (see Figure \ref{fig:5}), this approach was not pursued due to the constraints detailed in Section \ref{sec:challenges_solutions}.
+	As shown from Figure \ref{fig:4}, all the models accuracy in the initial testing phase with Wine Data from Table \ref{tab:Datasets}, were identical, and even by adding different noise types and values, the accuracy remained the same. These findings suggest that the QSVM operates as a deterministic rather than a stochastic system. In the subsequent phases, and then mutation operators were added to introduce bugs to QSVM program, to measure the metamorphic relations more effectively \cite{9678563}. 
 	
 	\begin{figure}[H]
 		\centering
@@ -1039,10 +1031,10 @@ To ensure the validity of the MRs, specifically the kernel-level MRs, we impleme
 	\end{figure}
 	
 	
-	Our subsequent evaluations revealed that introducing a specific number of shots to local simulators effectively injects randomness into the system, serving as an alternative to using a dedicated noisy device in Figure \ref{fig:6}, we show how the mutations are implemented in QSVM program. We are using intermediate managers to switch between mutated classes according to the mutation number provided. For example, if we are testing mutation \#1, then the feature map used will be from the \#1 mutated class of feature map class. All the mutants details can be found in Figures \ref{fig:11} through \ref{fig:18} in Appendix \ref{app:QSVMMutationsTable}.
+	Our subsequent evaluation revealed that introducing a specific number of shots to local simulators effectively injects randomness into the system, serving as an alternative to using a dedicated noisy device. In Figure \ref{fig:6} we show how the mutations are implemented in the QSVM program. We are using intermediate managers to switch between mutated classes according to the mutation number provided. For example, if we are testing mutation \#1, then the feature map used will be from the \#1 mutated class of feature map class. All mutants details can be found in Figures \ref{fig:11} through \ref{fig:18} in Appendix \ref{app:QSVMMutationsTable}.
 	
-	\begin{figure}[H]
-		\includegraphics[height=15.2cm, width=\linewidth]{figures/Mutants_Classes.png}
+	\begin{figure}[htbp]
+		\includegraphics[height=13.2cm, width=\linewidth]{figures/Mutants_Classes.png}
 		\caption{Mutations Implementation}
 		\label{fig:6}
 	\end{figure}
@@ -1053,53 +1045,55 @@ To ensure the validity of the MRs, specifically the kernel-level MRs, we impleme
 		\label{fig:7}
 	\end{figure}
 	
-	The final results for the system-level pipeline testing are shown in Figure \ref{fig:8}. MR\#1 killed the mutant \#1 and mutant \#26. MR\#2 killed mutant \#26, and MR\#3 killed mutant \#34. In Figure \ref{fig:9}, we can find that 10\% of the mutants were killed.
+	The final results for the system-level pipeline testing are shown in Figure \ref{fig:8}. First, the mutants shown in blue are labeled as equivalent and they are the results of the validation step as mentioned in section \ref{sec:validating_metamorphic_relations}. MR\#1 killed the mutant \#1 and mutant \#26. MR\#2 killed mutant \#26, and MR\#3 killed mutant \#34. In Figure \ref{fig:9}, we can find that 10\% of the mutants were killed. 
 	
-	\begin{figure}[H]
-		\includegraphics[height=18.2cm, width=\linewidth]{figures/mutant_outcome_fully_hierarchical_heatmap_sequential_labels_fixed_data.png}
-		\caption{QSVM Testing Results}
+	\begin{figure}[htbp]
+		\includegraphics[height=20.2cm, width=\linewidth]{figures/mutant_outcome_fully_hierarchical_heatmap_sequential_labels_fixed_data.png}
+		\caption{QSVM System-Level Test Results}
 		\label{fig:8}
 	\end{figure}
 	
 	\begin{figure}[H]
-		\includegraphics[height=15.2cm, width=\linewidth]{figures/mutant_detection_coverage_pie_chart.png}
-		\caption{Killed Mutants Percentage}
+		\includegraphics[height=12.2cm, width=\linewidth]{figures/mutant_detection_coverage_pie_chart.png}
+		\caption{System-Level Test - Killed Mutants Percentage}
 		\label{fig:9}
 	\end{figure}
 	
-	When we tested in the beginning with the scaling MR for SVM and the angle rotation MR, the metamorphic testing score was equal to 0, from Equation \ref{eq:MTS}. This shows that there is no difference between all the models regardless of the modifications, and this means there is not any stochastic factor when using QSVM in Qiskit and Pennylane. And in the subsequent phases, and then mutation operators were added to add bugs to QSVM program, to measure the metamorphic relations more effectively \cite{9678563}. 
 	
-	To address the low kill rate of system-level relations, the targeted quantum kernel experiment was conducted with 100 runs since the mutator is non-deterministic, and to provide statistical results. In Figure \ref{fig:v41_confidence}, we can see that 96\% of the mutants were killed in general in amplitude embedding, angle embedding and basis embedding.
+	To address the low kill rate of system-level relations, the targeted quantum kernel experiment was conducted with 100 runs since the mutator is non-deterministic, and to provide statistical results. 
+	In Figure \ref{fig:v41_confidence}, we can see that 96\% of the mutants were identified by the golden matrix as worthy mutants. There were 25 mutants generated for each feature map and only one of each did not pass the golden matrix validation to be tested. This shows that our validation method works, where we mentioned it in  section \ref{sec:validating_metamorphic_relations}.
 	
 	The heatmap analysis, from Figure \ref{fig:v41_heatmap}, reveals that \textbf{MR2 (Identity)} is the "Universal Oracle," catching nearly all structural and logic defects across all modes, and comes after it \textbf{MR12} and \textbf{MR1} equivalently.
 	
 	\begin{itemize}
-		\item \textbf{Basis Embedding}: Most of the mutants were killed by MR2 and then followed by  MR10
-		\item \textbf{Angle Embedding}: Most of the mutants were killed by MR1, MR2, MR3, MR4, and MR7 equally and some by MR12 then followed by MR5
-		\item \textbf{Amplitude Embedding}: MR1 and MR2 killed the majority of mutants, and some by MR9, then followed by MR11 and MR3 equally
+		\item \textbf{Basis Embedding}: Most of the mutants were killed by MR\#2 and then followed by MR\#5
+		\item \textbf{Angle Embedding}: Most of the mutants were killed by MR\#1, MR\#2, MR\#4, and MR\#11 equally. MR\#3 almost killed all mutants in all runs, and majority were killed by MR\#7. MR\#12 managed to killed nearly half.
+		\item \textbf{Amplitude Embedding}: MR\#1 and MR\#2 killed the majority of mutants, and half of the mutants were killed by MR\#6, then followed by MR\#4 and MR\#14 with equal percentages.
 	\end{itemize}
 	
-	\begin{figure}[H]
+		\begin{figure}[H]
 		\centering
-		\includegraphics[width=1.0\textwidth]{figures2/chart_v41_heatmap_omni_2_ordered.png}
+		\includegraphics[height=18.2cm, width=1.0\textwidth]{figures3/chart_v41_heatmap_omni_2_cmp_mr_only.png}
 		\caption{Omni-Suite Heatmap: Comparing the statistical reliability of all 14 MRs.}
 		\label{fig:v41_heatmap}
 	\end{figure}
 	
-	\begin{figure}[H]
+	
+		\begin{figure}[H]
 		\centering
-		\includegraphics[width=1.0\textwidth]{figures2/chart_v41_detection_omni_2_ordered.png}
+		\includegraphics[width=1.0\textwidth]{figures3/chart_v41_detection_omni_2_cmp_golden.png}
 		\caption{Detection Confidence: High robustness achieved across all encoding schemes.}
 		\label{fig:v41_confidence}
 	\end{figure}
 	
-	For the research questions (RQs) in this section, here are our findings. for RQ1, MR\#1 was the most efficient system-level MRs because it killed two mutants. At the kernel level, MR2 was the most effective. Then, we have MR\#1 and MR\#12 as the second and third most effective respectively. For RQ2, it seems we need to find more effective metamorphic relations since the system-level ones include the SVM related MRs, and they only killed 10\% of bugs. Also, another possible way to modify the test, is to apply different metamorphic relations for each component of QSVM. Finally, for RQ3, the answer is that by testing the quantum kernel, we managed to kill 96\% of the mutants created that showed drastic changes in the quantum kernel functionality, in all feature maps.
+	
+	For the research questions (RQs) in this section, here are our findings. For RQ1, MR\#1 was the most efficient system-level MRs because it killed two mutants. At the kernel-level, MR\#2 was the most effective. Then, we have MR\#1 and MR\#12 as the second and third most effective respectively. For RQ2, it seems we need to find more effective metamorphic relations since the system-level ones include the SVM-related MRs, and they only killed 10\% of bugs. Also, another possible way to modify the test, is to apply different metamorphic relations for each component of QSVM. Finally, for RQ3, the answer is that by testing the quantum kernel, we managed to kill 96\% of the mutants created that showed drastic changes in the quantum kernel functionality, in all feature maps.
 	
 	\subsection{Reflections, Challenges, and Solutions}
 	\label{sec:challenges_solutions}
 	
-	
-	One of the major challenges we faced in our experiments is that Qiskit related libraries versions need to be manually adjusted to be compatible with each other. Another challenge is that Pennylane abstracts the code and does not allow for a lot of customization as in Qiskit. Moreover, Pennylane's latest version as of this report is below 1.0 which shows that it is still in an experimental phase. Finally, training QSVM models takes a lot of time especially if we add noise. And it also depends on the number of inputs, the data dimension and how many k-folds are used, the training time for all models can take from a couple of hours to a couple of days. The last challenge is to have a comprehensive automated tool to create mutants, since the mutants used in our initial system-level metamorphic testing were manually modified.
+
+	One of the major challenges we faced in our experiments is that Qiskit related libraries versions need to be manually adjusted to be compatible with each other. Another challenge is that Pennylane abstracts the code and does not allow for a lot of customization as in Qiskit. Moreover, Pennylane's latest version as of this report is below 1.0 which shows that it is still in an experimental phase. Finally, training QSVM models takes a lot of time especially if we add noise. Furthermore, depending on the number of inputs, the data dimension, and how many k-folds are used, the training time for all models can take from a couple of hours to a couple of days. The last challenge is to have a comprehensive automated tool to create mutants, since the mutants used in our initial system-level metamorphic testing were manually modified.
 	
 	To solve the compatibility problem with Pennylane and Qiskit along with the randomness issue in Pennylane noise, the code can be fully re-implemented with Qiskit code only or even try another library like Qiskit-Machine-Learning. Moreover, the lengthy training time when implementing noise can be resolved by relying on using IBM back-end service as a real quantum computer instead of the simulation. However, the free tier offered by IBM provided only 10 minutes to run tests. In future, we can aim to expand our tests on IBM back-end services.
 	
@@ -1107,16 +1101,16 @@ To ensure the validity of the MRs, specifically the kernel-level MRs, we impleme
 	
 	But still, the mutants used in the system-level testing phase were created manually, which alludes to them not being exhaustive of all different variations. The experiment can be repeated with an automation tool to create mutants or can be repeated on more different mutants created manually.
 	
-	We would like to mention that more metamorphic relations can be used in testing QSVM to improve the test results presented in this Section. However, finding metamorphic relations takes a lot of time, and it took a lot of time to accumulate the necessary knowledge around software testing, machine learning, and quantum computer for this report. However, in future we can work on improving the results in this report.
+	We would like to mention that more metamorphic relations can be used in testing QSVM to improve the test results presented in this section. However, finding metamorphic relations takes a lot of time, and it took a lot of time to accumulate the necessary knowledge around software testing, machine learning, and quantum computer for this report. However, in future we can work on improving the results in this report.
 	
 	\section{Conclusion and Next Plan}
 	\label{sec:conclusion}
 	
 	\subsection{Conclusion}
 	
-	On a high level, QSVM is still more of a machine learning algorithm rather than a quantum algorithm. Subsequently, testing QSVM as a whole pipeline with different metamorphic relations showed that the metamorphic relations related to SVM were more effective than the ones related to Quantum Computing. However, the possibility stands that there could be more effective metamorphic relations that could be used and could be more effective. But, finding these metamorphic relations will need more work and research. 
+	At a high level, QSVM is still more of a machine learning algorithm rather than a quantum algorithm. Subsequently, testing QSVM as a whole pipeline with different metamorphic relations showed that the metamorphic relations related to SVM were more effective than the ones related to Quantum Computing. However, the possibility stands that there could be more effective metamorphic relations that could be used and could be more effective. But, finding these metamorphic relations will need more work and research. 
 	
-	In the last experiment, when we tested only the quantum element in QSVM, and we managed to kill almost all the mutants using 14 quantum kernel metamorphic relations with a success rate of 96\%. The kernel-level testing phase was generally more promising than the system-level testing phase.
+	In the last experiment, when we tested only the quantum element in QSVM, we managed to kill almost all the mutants using 14 quantum kernel metamorphic relations with a success rate of 96\%. The kernel-level testing phase was generally more promising than the system-level testing phase.
 		
 	\subsection{Work Plan for Next Period}
 	\label{sec:next-plan}
@@ -1125,7 +1119,7 @@ To ensure the validity of the MRs, specifically the kernel-level MRs, we impleme
 	
 	\subsection{Study Plan}
 	
-	The Gantt Chart for study plan is shown in the appendix (see Figure \ref{fig:10}). The first thing to do next is start working on Quantum Convolutional Neural Networks (QCNNs) after the upgrade. Then, Statistical testing will be applied on QCNNs along with mutation testing. 
+	The Gantt chart for the study plan is shown in the appendix (see Figure \ref{fig:10}). The first thing to do next is start working on Quantum Convolutional Neural Networks (QCNNs) after the upgrade. Then, Statistical testing will be applied on QCNNs along with mutation testing. 
 	
 	After that, in the third year advanced testing techniques can be used. Then after that, the work to finalize the dissertation will start.
 	

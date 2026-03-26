@@ -2,6 +2,9 @@
   "name": "qsvm-structure-testing",
   "version": "1.0.0",
   "private": true,
+  "engines": {
+    "node": ">=20.19.0"
+  },
   "main": "electron/main.js",
   "scripts": {
     "start": "node run.js",

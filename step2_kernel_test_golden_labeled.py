@@ -1,7 +1,9 @@
 """
-Step 2: Kernel Testing (February main41 logic).
-Defect-based mutation testing with 14 metamorphic relations.
-Runs after Step 1 (September-style mutant testing).
+Step 2 (golden-labeled export): same logic as step2_kernel_test.py but writes
+results_v41_kernel_test_golden_labeled.csv with column Golden_Matrix_Caught_Rate
+(fraction of runs where max kernel deviation on golden samples exceeds ε).
+
+Use step2_kernel_test.py for the default Caught_Rate CSV used by the app.
 """
 
 import os
@@ -22,20 +24,19 @@ import warnings
 USE_FIXED_SEED = False
 NUM_RUNS = int(os.environ.get("QSVM_STEP2_NUM_RUNS", "100"))
 N_QUBITS = 4
-FILE_RESULTS = "results_v41_kernel_test.csv"
-# MR / oracle comparisons inside check_mr_omni (unchanged)
+FILE_RESULTS = "results_v41_kernel_test_golden_labeled.csv"
+# MR / oracle comparisons inside check_mr_omni
 TOL_IDEAL = 1e-6
 TOL_AMP = 1e-8
-# Golden-matrix only: max L2 deviation on 5×5 kernel samples; "caught" iff diff > golden_tol.
-# Increase these to get more runs classified as not caught (diff ≤ threshold).
+# Golden-matrix catch rule only (independent of MR tolerances)
 GOLDEN_TOL_IDEAL = 1e-3
 GOLDEN_TOL_AMP = 1e-5
 
 warnings.filterwarnings("ignore")
 
 
-def run_step2_kernel_test():
-    """Execute the February main41 kernel testing as Step 2."""
+def run_step2_kernel_test_golden_labeled():
+    """Same as run_step2_kernel_test but saves Golden_Matrix_Caught_Rate column."""
     # ==========================================
     # 1. DATA PREPARATION
     # ==========================================
@@ -221,7 +222,7 @@ def run_step2_kernel_test():
         np.random.seed(42)
 
     print(f"\n{'='*60}")
-    print("STEP 2: Kernel Testing (February main41)")
+    print("STEP 2 (golden-labeled CSV): Kernel Testing (February main41)")
     print(f"{'='*60}")
     print(f"Starting: {len(combos)} defect combos x {iterations} runs per mode")
 
@@ -256,11 +257,18 @@ def run_step2_kernel_test():
                             if m_fail and not h_fail:
                                 mr_kill_counts[f"MR_{mr}"] += 1
 
-            avg_caught = caught_count / iterations
+            avg_golden_matrix_caught = caught_count / iterations
             avg_mr_kills = {k: v / iterations for k, v in mr_kill_counts.items()}
 
-            results.append([mode, "+".join(d), avg_caught] + list(avg_mr_kills.values()))
+            results.append([mode, "+".join(d), avg_golden_matrix_caught] + list(avg_mr_kills.values()))
 
-    df = pd.DataFrame(results, columns=["Mode", "Defects", "Caught_Rate"] + [f"Efficient_MR_{i}_Rate" for i in ALL_MRS])
+    df = pd.DataFrame(
+        results,
+        columns=["Mode", "Defects", "Golden_Matrix_Caught_Rate"] + [f"Efficient_MR_{i}_Rate" for i in ALL_MRS],
+    )
     df.to_csv(FILE_RESULTS, index=False)
-    print(f"\nStep 2 complete. Results saved to {FILE_RESULTS}")
+    print(f"\nStep 2 (golden-labeled) complete. Results saved to {FILE_RESULTS}")
+
+
+if __name__ == "__main__":
+    run_step2_kernel_test_golden_labeled()
